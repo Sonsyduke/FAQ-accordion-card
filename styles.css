@@ -170,11 +170,14 @@ body {
   background-size: cover;
   display: flex;
   align-items: center;
-  /* flex-basis: 40%; */
 }
 
 .main-img {
   position: relative;
+}
+
+.mobile-illustrator {
+  display: none;
 }
 
 .box {
@@ -188,6 +191,7 @@ body {
   flex-direction: column;
   justify-content: center;
   padding: 0 50px;
+  width: 100%;
 }
 
 .main-heading {
@@ -197,55 +201,100 @@ body {
   margin-bottom: 50px;
 }
 
-.questions {
+.accordion-header {
+  width: 100%;
+  padding: 10px 0;
+  margin-bottom: 10px;
+  background-color: transparent;
+  border: none;
   border-bottom: 1px solid var(--Light-grayish-blue);
-}
-
-.ques {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding-bottom: 20px;
-}
-
-.ques:hover {
-  cursor: pointer;
-}
-
-.question {
-  color: var(--Very-dark-grayish-blue);
-  margin-right: 10px;
+  color: var(--Dark-grayish-blue);
   font-size: 0.9rem;
-  font-weight: 400;
 }
 
-.question:hover {
+.accordion-header.active {
+  font-weight: 700;
+}
+
+.accordion-header.active img {
+  transform: rotate(180deg);
+  transition: all 300ms ease;
+}
+
+.accordion-header:hover {
   color: var(--Soft-red);
   cursor: pointer;
 }
 
-.answer {
-  display: none;
-  color: var(--Very-dark-desaturated-blue);
+.accordion-body {
+  color: var(--Dark-grayish-blue);
   font-size: 0.8rem;
-  padding-bottom: 20px;
   line-height: 1.5;
-}
-
-.hidden {
-  display: block;
-}
-
-.activeQuestion {
-  font-weight: 700;
-}
-
-.arrow {
-  transform: rotate(0deg);
+  max-height: 0;
+  overflow: hidden;
   transition: all 300ms ease;
 }
 
-.arrowActive {
-  transform: rotate(180deg);
-  transition: all 300ms ease;
+.accordion-body.active {
+  max-height: 10rem;
+  padding: 1rem 0;
+}
+
+/* Media Queries */
+@media (max-width: 1100px) {
+  .main-container {
+    width: 90%;
+  }
+  .main-img {
+    width: 400px;
+  }
+}
+
+@media (max-width: 900px) {
+  .main-img {
+    width: 300px;
+  }
+
+  .box {
+    width: 50%;
+  }
+}
+
+@media (max-width: 700px) {
+  .main-container {
+    flex-direction: column;
+    min-height: 600px;
+  }
+
+  .left-side {
+    height: 30%;
+  }
+
+  .box {
+    display: none;
+  }
+
+  .main-img {
+    display: none;
+  }
+
+  .mobile-illustrator {
+    display: block;
+    width: 200%;
+    height: 200px;
+    position: relative;
+    top: -50px;
+  }
+
+  .right-side {
+    width: 300px;
+    margin: auto;
+  }
+
+  .main-heading {
+    text-align: center;
+    margin-bottom: 20px;
+  }
 }
